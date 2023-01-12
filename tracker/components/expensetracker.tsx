@@ -13,7 +13,7 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 const ExpenseTracker = () => {
 
     const { event, setEvent, numbers, setNumber, onClickHandler, addValue,
-        setMinusVal, minusVal, plusVal
+        setMinusVal, minusVal, plusVal, totalIncome, total
     } = useExpenseTracker()
 
     return (
@@ -36,7 +36,7 @@ const ExpenseTracker = () => {
                     <Box borderEnd={"solid"} w='250px' h='100px' textAlign={"center"} pt={3}>
                         <b > Income </b>
                         <br/>
-                        <Box marginTop={"4"}> <b> {plusVal} </b> </Box>
+                        <Box marginTop={"4"}> <b> {total} </b> </Box>
                     </Box>
                     <Box w='250px' h='100px' textAlign={"center"} pt={3}>
                         <b>  Expense </b> <br/>
@@ -46,15 +46,19 @@ const ExpenseTracker = () => {
                 </HStack>
             </Box>
             <br /><br />
-
             <Box w={"30%"} h={"100px"} justifyContent={"center"} margin={"auto"} textAlign={"center"}>
-                <b>Transaction History</b>
-                <br />
-                <hr />
+            <b>Transaction History</b>
+            <br/><hr />
+            </Box>
+            
+            <Box w={"30%"} h={"100px"} justifyContent={"center"} margin={"auto"} mt={"-10"} textAlign={"center"} overflow={"scroll"}>
+                
+                <br/>
+                
                 {
                     addValue.map((value)=>{
                         return (
-                          <VStack>  <div>
+                          <VStack >  <div>
                                 {value.item} {value.amount}
                             </div> </VStack>
                         )
@@ -62,7 +66,7 @@ const ExpenseTracker = () => {
                 }
                 
                 </Box>
-
+                    <br/>
           <div>  <Box w={"30%"} h={"200px"} justifyContent={"center"} margin={"auto"} textAlign={"center"}>
                 <b> Add New Transaction</b><br />
                 <hr /> <br />
