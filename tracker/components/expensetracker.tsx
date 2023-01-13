@@ -13,7 +13,7 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 const ExpenseTracker = () => {
 
     const { event, setEvent, numbers, setNumber, onClickHandler, addValue,
-        setMinusVal, minusVal, plusVal, totalIncome, total
+        setMinusVal, minusVal, plusVal, total
     } = useExpenseTracker()
 
     return (
@@ -59,7 +59,7 @@ const ExpenseTracker = () => {
                     addValue.map((value)=>{
                         return (
                           <VStack >  <div>
-                                {value.item} {value.amount}
+                                {value.item}  {value.amount}
                             </div> </VStack>
                         )
                     })

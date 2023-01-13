@@ -13,7 +13,7 @@ const useExpenseTracker = () => {
     const [addValue, setAddValue] = useState<trackerType[]>([])
     const [minusVal, setMinusVal] = useState<number>(0)
     const [plusVal, setPlusVal] = useState<number>(0)
-    const [total, setTotal] = useState<number>()
+    const [total, setTotal] = useState<number[]>()
 
     const totalIncome = () => {
        }
@@ -35,14 +35,20 @@ const useExpenseTracker = () => {
             setPlusVal(numbers)
         }
 
-        var incomeTotal:number=0
+        const incomeTotal:number[]=[]
         addValue.forEach((income)=>{
             
-            incomeTotal+=income.amount} )
+            incomeTotal.push(income.amount)} )
         setTotal(incomeTotal)
+
+        let a:number
+        total.forEach((item,ind)=>{
+            a+=item
+        })
              
     }
 
+  
     return{
         
         setEvent, event, numbers, setNumber, onClickHandler, addValue,
