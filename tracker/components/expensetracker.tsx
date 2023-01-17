@@ -73,7 +73,7 @@ const ExpenseTracker = () => {
                 <label htmlFor="trasnaction"></label>
                 <Input onChange={(e) => setEvent(e.target.value)} id="tranaction" w={"110%"} value={event}/>
                 <NumberInput>
-                    <NumberInputField w={"110%"} onChange={(e) => setNumber(e.target.value)}  />
+                    <NumberInputField w={"110%"} onChange={(e) => setNumber(parseFloat (e.target.value))}  />
                     <NumberInputStepper >
                         <NumberIncrementStepper />
                         <NumberDecrementStepper />

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const useExpenseTracker = () => {
 
@@ -13,20 +13,31 @@ const useExpenseTracker = () => {
     const [addValue, setAddValue] = useState<trackerType[]>([])
     const [minusVal, setMinusVal] = useState<number>(0)
     const [plusVal, setPlusVal] = useState<number>(0)
-    const [total, setTotal] = useState<number[]>()
+    const [total, setTotal] = useState<number>(0)
 
-    const totalIncome = () => {
-       }
-    
-    const addNewValue:trackerType = {
-        item:event,
-        amount:numbers
-    }
+    useEffect (()=>{onClickHandler()}, [])
+
+   
 
     const onClickHandler = () => {
+
+        let a:number=0
+        const addNewValue:trackerType = {
+            item:event,
+            amount:numbers
+        }
+
         setAddValue([...addValue, addNewValue])
-        setEvent("")
-        setNumber(0)
+        
+
+        
+        addValue.forEach((item1,ind)=>{
+            
+            a+=item1.amount
+        }
+        )
+        setTotal(a)
+        
         
         if(numbers<0) {
             setMinusVal(numbers)
@@ -35,24 +46,18 @@ const useExpenseTracker = () => {
             setPlusVal(numbers)
         }
 
-        const incomeTotal:number[]=[]
-        addValue.forEach((income)=>{
-            
-            incomeTotal.push(income.amount)} )
-        setTotal(incomeTotal)
-
-        let a:number
-        total.forEach((item,ind)=>{
-            a+=item
-        })
-             
+      
+        console.log("aaaa>>>", a);    
     }
+    
+    
+    
 
   
     return{
         
         setEvent, event, numbers, setNumber, onClickHandler, addValue,
-        setMinusVal, minusVal, plusVal, setPlusVal, totalIncome, total
+        setMinusVal, minusVal, plusVal, setPlusVal, total
         
     }
 }
